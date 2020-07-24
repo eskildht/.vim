@@ -1,2 +1,2 @@
-hi clear texItalStyle
-hi clear texBoldStyle
+"hi clear texItalStyle
+"hi clear texBoldStyle

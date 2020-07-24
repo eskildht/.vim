@@ -1,21 +1,42 @@
+" vim-plug
+call plug#begin('~/.vim/plugged')
+Plug 'vim-airline/vim-airline'
+Plug 'jpalardy/vim-slime'
+Plug 'sheerun/vim-polyglot'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+call plug#end()
+
 " General settings
 filetype on
-syntax enable 
+syntax enable
 set number relativenumber
 filetype plugin indent on
+set backspace=indent,eol,start
+
+" Tools
+" Remove all trailing whitespace by pressing F1
+nnoremap <F1> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+" Indent entire file from start to end
+nnoremap <F2> msgg=G`s:delmarks s<CR>
 
 " Colorscheme
-set background=dark
-colorscheme solarized
+set termguicolors
+let g:sonokai_style = 'andromeda'
+let g:sonokai_enable_italic = 0
+let g:sonokai_disable_italic_comment = 1
+colorscheme sonokai
 
-" Statusline
-set laststatus=2
-set statusline=
-set statusline+=%#LineNr#
-set statusline+=\ %F
-set statusline+=%=
-set statusline+=%p%%
-set statusline+=\ 
+" airline
+set noshowmode
+
+" tmux vim-slime
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": "default", "target_pane": "{right-of}"}
+
+" coc
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 """ LaTex
 let g:tex_flavor = "tex"
@@ -44,6 +65,7 @@ autocmd filetype tex inoremap ,lio \begin{enumerate}<CR>\item<Space><CR>\end{enu
 autocmd filetype tex inoremap ,it \item<Space>
 autocmd filetype tex inoremap ,fig \begin{figure}[H]<CR>\centering<CR>\includegraphics[width=0.75\textwidth]{}<CR>\caption{<++>}<CR>\label{<++>}<CR>\end{figure}<Esc>03kf}i
 autocmd filetype tex inoremap ,tab \begin{table}[H]<CR>\caption{}<CR>\label{<++>}<CR>\begin{center}<CR>\begin{tabular}{<++>}<CR>\hline<CR><++><CR>\hline<CR><++><CR>\hline<CR>\end{tabular}<CR>\end{center}<CR>\end{table}<Esc>011kf}i
+autocmd filetype tex inoremap ,code \begin{lstlisting}<CR><CR>\end{lstlisting}<Esc>ki
 autocmd filetype tex inoremap ,nc <Space>&<Space>
 autocmd filetype tex inoremap ,nr <Space>\\<CR>
 autocmd filetype tex inoremap ,re \ref{}<Esc>i
@@ -71,11 +93,11 @@ autocmd filetype tex inoremap ,ep \varepsilon
 autocmd filetype tex inoremap ,Ep E
 autocmd filetype tex inoremap ,si \sigma
 autocmd filetype tex inoremap ,Si \Sigma
-autocmd filetype tex inoremap ,un \cup
-autocmd filetype tex inoremap ,in \cap
-autocmd filetype tex inoremap ,bla \langle
-autocmd filetype tex inoremap ,bra \rangle
-autocmd filetype tex inoremap ,rarr \rightarrow
-autocmd filetype tex inoremap ,larr \leftarrow
+autocmd filetype tex inoremap ,union \cup
+autocmd filetype tex inoremap ,isec \cap
+autocmd filetype tex inoremap ,bla \langle<Space>
+autocmd filetype tex inoremap ,bra \rangle<Space>
+autocmd filetype tex inoremap ,rarr \rightarrow<Space>
+autocmd filetype tex inoremap ,larr \leftarrow<Space>
 autocmd filetype tex inoremap ,ti \cdot<Space>
 """ END
