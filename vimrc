@@ -3,6 +3,14 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'jpalardy/vim-slime'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'preservim/nerdtree'
+Plug 'mattn/emmet-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'justinmk/vim-sneak'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " General settings
@@ -11,6 +19,7 @@ syntax enable
 set number relativenumber
 filetype plugin indent on
 set backspace=indent,eol,start
+let mapleader = ","
 
 " Tools
 " Remove all trailing whitespace by pressing F1
@@ -20,10 +29,11 @@ nnoremap <F2> msgg=G`s:delmarks s<CR>
 
 " Colorscheme
 set termguicolors
-let g:sonokai_style = 'andromeda'
-let g:sonokai_enable_italic = 0
-let g:sonokai_disable_italic_comment = 1
-colorscheme sonokai
+" let g:sonokai_style = 'andromeda'
+" let g:sonokai_enable_italic = 0
+" let g:sonokai_disable_italic_comment = 1
+" colorscheme sonokai
+colorscheme eldar
 
 " airline
 set noshowmode
@@ -32,10 +42,23 @@ set noshowmode
 let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": "default", "target_pane": "{right-of}"}
 
+" vim-sneak
+let g:sneak#s_next = 1
+
+" Fugitive Conflict Resolution
+nnoremap <leader>gd :Gvdiffsplit!<CR>
+nnoremap gdh :diffget //2<CR>
+nnoremap gdl :diffget //3<CR>
+
 " coc
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" NERDTree
+let NERDTreeShowHidden = 1
+nmap <leader>nt = :NERDTree<cr>
+
 
 """ LaTex
 let g:tex_flavor = "tex"

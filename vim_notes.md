@@ -8,4 +8,5 @@
 :PlugUpdate - Update plugins
 :PlugClean - Clean after removal
 
-
+# fugitive
+https://medium.com/prodopsio/solving-git-merge-conflicts-with-vim-c8a8617e3633
