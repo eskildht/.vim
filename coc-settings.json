@@ -1,4 +1,8 @@
 {
 	"suggest.noselect": false,
-	"python.jediPath": "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages"
+	"python.jediPath": "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages",
+	"python.linting.flake8Enabled": true,
+	"python.linting.pylintEnabled": false,
+	"eslint.autoFixOnSave": false,
+	"coc.preferences.formatOnSaveFiletypes": ["python"]
 }
