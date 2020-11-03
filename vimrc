@@ -67,8 +67,8 @@ nmap <leader>nt = :NERDTree<cr>
 let g:tex_flavor = "tex"
 
 " Kompilering
-autocmd filetype tex nnoremap <expr> ep stridx(expand('%:p'), 'Dropbox/Apps/Overleaf/') != -1 ? ":w<CR>:!pdflatex -output-directory ~/Documents/latex/safe-out/ %<CR><CR>" : ":w<CR>:!pdflatex %<CR><CR>"
-autocmd filetype tex nnoremap <expr> epo stridx(expand('%:p'), 'Dropbox/Apps/Overleaf/') != -1 ? ":w<CR>:!pdflatex -output-directory ~/Documents/latex/safe-out/ %  && open -a 'Skim' ~/Documents/latex/safe-out/%:r.pdf<CR><CR>" : ":w<CR>:!pdflatex % && open -a 'Skim' %:r.pdf<CR><CR>"
+autocmd filetype tex nnoremap ep :w<CR>:!pdflatex %<CR><CR>
+autocmd filetype tex nnoremap epo :w<CR>:!pdflatex % && open -a 'Skim' %:r.pdf<CR><CR>
 
 " Navigering
 autocmd filetype tex nnoremap <Space><Space> <Esc>/<++><CR>"_c4l
